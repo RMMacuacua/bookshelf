@@ -21,6 +21,7 @@ class CreateTableBooks extends Migration
             $table->string('edicao');
             $table->double('preco',8,3);
             $table->string('isbn');
+            $table->text('sinopse');
             $table->timestamps();
         });
     }

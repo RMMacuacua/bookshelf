@@ -15,9 +15,21 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+    //return view('home');
 });
 
 
-Route::get('/home', function () {
-    return view('home');
+Route::get('/livros/listar','BooksController@index');
+Route::get('/livros/gravar','BooksController@registar');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/backoffice', 'BAckOffieController@index')->name('home');
+
+
+Route::prefix('backoffice')->group(function () {
+    Route::get('/', 'BAckOffieController@index')->name('home');
+    Route::get('/livros/listar','BooksController@listar')->name('listarlivros');
+    Route::get('/livros/registar','BooksController@registar')->name('registarlivros');
+    Route::post('/livros/gravar','BooksController@store')->name('livros.gravar');
 });
