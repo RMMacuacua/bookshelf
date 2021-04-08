@@ -65,9 +65,9 @@
   <body class="c-app">
     <div class="c-sidebar c-sidebar-dark c-sidebar-fixed c-sidebar-lg-show" id="sidebar">
 
-      @include('dashboard.shared.nav-builder')
+      @include('backoffice.shared.nav')
 
-      @include('dashboard.shared.header')
+      @include('backoffice.shared.header')
 
       <div class="c-body">
 
@@ -85,8 +85,21 @@
     <!-- CoreUI and necessary plugins-->
     <script src="{{ asset('js/coreui.bundle.min.js') }}"></script>
     <script src="{{ asset('js/coreui-utils.js') }}"></script>
-
     @yield('javascript')
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="//cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+    <script>
+      $.fn.dataTable.ext.errMode = 'throw';
+        $(document).ready(function() {
+            $('#example').DataTable( {
+                "serverSide": true,
+                "ajax": "../server_side/scripts/server_processing.php"
+            } );
+        } );
+    </script>
+
+
+
 
   </body>
 </html>

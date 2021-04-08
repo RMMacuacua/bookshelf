@@ -59,6 +59,7 @@ Route::group(['middleware' => ['get.menu']], function () {
             Route::get('/modals', function(){   return view('dashboard.notifications.modals'); });
         });
         Route::resource('notes', 'NotesController');
+        Route::get('/reglivro', 'livroController@create')->name('livos.criar');
     });
     Auth::routes();
 
@@ -72,7 +73,7 @@ Route::group(['middleware' => ['get.menu']], function () {
         'destroy'   => 'resource.destroy'
     ]);
 
-    Route::group(['middleware' => ['role:admin']], function () {
+    Route::group(['middleware' => ['role:user']], function () {
         Route::resource('bread',  'BreadController');   //create BREAD (resource)
         Route::resource('users',        'UsersController')->except( ['create', 'store'] );
         Route::resource('roles',        'RolesController');
@@ -118,4 +119,33 @@ Route::group(['middleware' => ['get.menu']], function () {
             Route::get('/file/copy',        'MediaController@fileCopy')->name('media.file.copy');
         });
     });
+
+    
 });
+
+    Route::get('/backoffice', function () {  return view('backoffice.backoffice'); });
+    Route::get('/reglivro', 'livroController@create')->name('livos.criar');
+    Route::post('/gravarlivro','livroController@store')->name('livros.guardar');
+    Route::get('/livros','livroController@show')->name('livros.listar');
+
+    Route::get('/generolist','GeneroController@show')->name('generos.listar');
+    Route::get('/genero','GeneroController@create')->name('generos.criar');
+    Route::post('/generostore','GeneroController@store')->name('generos.guardar');
+    
+    Route::get('/idioma','IdiomaController@create')->name('idioma.criar');
+    Route::post('/idioma','IdiomaController@store')->name('idioma.guardar');
+    Route::get('/idiomalist','IdiomaController@show')->name('idioma.listar');
+
+    Route::get('/autor','AutorController@create')->name('autor.criar');
+    Route::post('/autor','AutorController@store')->name('autor.guardar');
+    Route::get('/autorlist','AutorController@show')->name('autor.listar');
+
+    Route::get('/editora','EditoraController@create')->name('editora.');
+    Route::post('/editora','EditoraController@store')->name('editora.guardar');
+    Route::get('/editoralist','EditoraController@show')->name('editora.listar');
+
+
+
+    Route::get('/loja','shopController@home')->name('loja.home');
+    Route::get('/loja/{title}/detalhes','shopController@details');
+

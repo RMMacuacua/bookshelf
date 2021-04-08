@@ -65,9 +65,9 @@
   <body class="c-app">
     <div class="c-sidebar c-sidebar-dark c-sidebar-fixed c-sidebar-lg-show" id="sidebar">
 
-      @include('dashboard.shared.nav-builder')
+      @include('backoffice.shared.nav-builder')
 
-      @include('dashboard.shared.header')
+      @include('backoffice.shared.header')
 
       <div class="c-body">
 
@@ -76,7 +76,7 @@
           @yield('content') 
 
         </main>
-        @include('dashboard.shared.footer')
+        @include('backoffice.shared.footer')
       </div>
     </div>
 
