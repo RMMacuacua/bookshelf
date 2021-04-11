@@ -6,7 +6,7 @@
     <div class="row">
       <div class="col-sm-12">
         <div class="card">
-          <div class="card-header"><h4>Cre</h4></div>
+          <div class="card-header"><h4>Registar Autor</h4></div>
             <div class="card-body">
                 @if(Session::has('message'))
                     <div class="row">
@@ -19,7 +19,7 @@
                     <div class="col-6">
                         <form method="POST" action="{{ route('autor.guardar') }}">
                             @csrf
-                            <input name="marker" value="selectModel" type="hidden">
+                            
                             <div class="form-group">
                                 <label>Nome Do Autor</label>
                                 <input 

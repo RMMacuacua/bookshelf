@@ -6,14 +6,21 @@
     <div class="col-sm-4 col-md-3">
       <a href="/loja/{{$livro->titulo}}/detalhes">
         <div class="card">
-          <div class="card-body ">
-            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-          
+          <div class="card-body border: none">
+            <div class="row justify-content-center">
+              <?php
+                $arr = DB::table('imagens_livros')->select('imagem')->where('livro_id',$livro->id_livro)->first();
+              ?>
+              
+              <img style="max-width:250px; max-height:250px" src="<?php echo "data:image/jpeg;base64,".$arr->imagem;?>"
+                                    alt="Cinque Terre" class="c-avatar-img">
 
+            </div>
+            <div class="row justify-content-center">
+              {{$livro->titulo}}
+            </div>
           </div>
-          <div class="card-footer">
-              {{$livro->preco}}
-</div>
+          
         </div>
       </a>
     </div> 

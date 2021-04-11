@@ -37,12 +37,7 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        $user = User::find($id);
-        return view('dashboard.admin.userShow', compact( 'user' ));
-    }
-
+    
     /**
      * Show the form for editing the specified resource.
      *
@@ -89,5 +84,11 @@ class UsersController extends Controller
             $user->delete();
         }
         return redirect()->route('users.index');
+    }
+
+    public function show()
+    {
+        $users = User::all();
+        return view('backoffice.users.listar',compact('users'));
     }
 }

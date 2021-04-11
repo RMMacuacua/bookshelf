@@ -1,13 +1,13 @@
 @extends('base')
 
 @section('content')
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
+
 <div class="container-fluid">
   <div class="fade-in">
     <div class="row">
       <div class="col-sm-12">
         <div class="card">
-          <div class="card-header"><h4>Cre</h4></div>
+          <div class="card-header"><h4>Livros</h4></div>
             <div class="card-body">
                        
             <div class="display ">
@@ -20,6 +20,7 @@
                     <th>preco</th>
                     <th>genero</th>
                     <th>Reg. por</th>
+                    <th>Ops</th>
                 </tr>
             </thead>
             <tbody>
@@ -28,16 +29,22 @@
                     <td>{{$livro->titulo}}</td>
                     <td>{{$livro->autor_id}}</td>
                     <td>{{$livro->isbn}}</td>
-                    <td>3333</td>
+                    <td>{{$livro->preco}}</td>
                     <td>{{$livro->genero_id}}</td>
                     <td>{{$livro->registado_por}}</td>
+                    <td>
+                      <a type="button" class="btn btn-secondary" href='{{url("/livro/{$livro->id_livro}/editar")}}'>
+                      Modificar</a>
+                      <a type="button" class="btn btn-danger" href='{{url("/livro/{$livro->id_livro}/eliminar")}}'>
+                      eliminar</a>
+                    </td>
                 </tr>
             @endforeach
             </tbody>
         </table>
         <br>
         <div>
-        <a href="{{route('livos.criar')}}" class="buttonx"> Reg Livro</a>
+        <a href="{{route('livos.criar')}}" type="button" class="btn btn-secondary"> Reg Livro</a>
         </div>
     </div>
             </div>

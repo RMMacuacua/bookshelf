@@ -1,7 +1,12 @@
 @extends('base')
 
 @section('content')
-teste
+<?php
+if(Auth::check() === true){
+        echo " sim";
+        }else{
+        echo " naaa";
+        }?>
 @endsection
 
 @section('javascript')

@@ -19,8 +19,18 @@
                 </a>
               </li>
               <li class="c-sidebar-nav-item">
+                <a class="c-sidebar-nav-link" href="/reglivro">
+                  registar Livro
+                </a>
+              </li>
+              <li class="c-sidebar-nav-item">
                 <a class="c-sidebar-nav-link" href="/generolist"> 
                   Generos
+                </a>
+              </li>
+              <li class="c-sidebar-nav-item">
+                <a class="c-sidebar-nav-link" href="/genero">
+                  novo Genero
                 </a>
               </li>
               <li class="c-sidebar-nav-item">
@@ -29,13 +39,28 @@
                 </a>
               </li>
               <li class="c-sidebar-nav-item">
+                <a class="c-sidebar-nav-link" href="/idioma">
+                  novo idioma
+                </a>
+              </li>
+              <li class="c-sidebar-nav-item">
                 <a class="c-sidebar-nav-link" href="/editoralist"> 
                   Editoras
                 </a>
               </li>
               <li class="c-sidebar-nav-item">
+                <a class="c-sidebar-nav-link" href="/editora">
+                  nova editora
+                </a>
+              </li>
+              <li class="c-sidebar-nav-item">
                 <a class="c-sidebar-nav-link" href="/autorlist"> 
                   Autores
+                </a>
+              </li>
+              <li class="c-sidebar-nav-item">
+                <a class="c-sidebar-nav-link" href="/autor">
+                  novo autor
                 </a>
               </li>
             </ul>
@@ -45,7 +70,21 @@
             <a class="c-sidebar-nav-dropdown-toggle" href="#">
               utilizadores
             </a>
+            
             <ul class="c-sidebar-nav-dropdown-items">
+              @if(Auth::check() === false)
+              <li class="c-sidebar-nav-item">
+                <a class="c-sidebar-nav-link" href="/login">
+                  Login</a>
+              </li>
+              @endif
+              <li class="c-sidebar-nav-item">
+                <a class="c-sidebar-nav-link" href="/regfuncionarrio" target="_top">
+                Register</a></li>
+                <li class="c-sidebar-nav-item">
+                <a class="c-sidebar-nav-link" href="/userslist">
+                  Listar</a>
+              </li>
             </ul>
           </li>
           <li class="c-sidebar-nav-dropdown">

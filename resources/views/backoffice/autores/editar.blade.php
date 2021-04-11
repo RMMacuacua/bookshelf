@@ -6,7 +6,7 @@
     <div class="row">
       <div class="col-sm-12">
         <div class="card">
-          <div class="card-header"><h4>Registar Editora</h4></div>
+          <div class="card-header"><h4>Editar Autor</h4></div>
             <div class="card-body">
                 @if(Session::has('message'))
                     <div class="row">
@@ -16,34 +16,35 @@
                     </div>
                 @endif            
                 <div class="row">
-                    <div class="col-6">
-                        <form method="POST" action="{{ route('editora.guardar') }}">
+                    <div class="col">
+                        <form method="POST" action="{{ route('autor.guardar') }}">
                             @csrf
+                            <input name="id" value="{{$autor->id_autor}}" type="hidden">
                             <div class="form-group">
-                                <label>Nome da Editora</label>
+                                <label>Nome Do Autor</label>
                                 <input 
+                                    class="form-control"
                                     type="text"
-                                    placeholder="Editora"
+                                    placeholder="Table name"
                                     name="nome"
                                     class="form-control"
+                                    value="{{$autor->nome}}"
                                 >
+                                @if ($errors->has('nome'))
+                                    <span class="help-block" style="color:red">
+                                        <strong>{{ $errors->first('name') }}</strong>
+                                    </span>
+                                    @endif
+
                             </div>
                             <div class="form-group">
-                                <label>Endereço</label>
+                                <label>Descrição/ breve biografia</label>
                                 <input 
                                     type="text"
-                                    placeholder="Endereço"
-                                    name="endereco"
+                                    placeholder="Table name"
+                                    name="desc"
                                     class="form-control"
-                                >
-                            </div>
-                            <div class="form-group">
-                                <label>Contactos</label>
-                                <input 
-                                    type="text"
-                                    placeholder="contactos"
-                                    name="contactos"
-                                    class="form-control"
+                                    value="{{$autor->descricao}}"
                                 >
                             </div>
                             <button

@@ -1,4 +1,4 @@
-@extends('backoffice.base')
+@extends('base')
 
 @section('content')
 <div class="container-fluid">

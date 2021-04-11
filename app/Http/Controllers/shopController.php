@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Livro;
+use DB;
 
 class shopController extends Controller
 {
@@ -15,7 +16,8 @@ class shopController extends Controller
     
     public function details($title)
     {
-        return view('loja.views.detalhes');
+        $livro = Livro::where('titulo',$title)->first();
+        return view('loja.views.detalhes',compact('livro'));
 
     }
 }

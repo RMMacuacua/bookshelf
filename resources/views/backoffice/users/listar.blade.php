@@ -6,24 +6,37 @@
     <div class="row">
       <div class="col-sm-12">
         <div class="card">
-          <div class="card-header"><h4>Cre</h4></div>
+          <div class="card-header"><h4>Users</h4></div>
             <div class="card-body">
                        
             <div class="display col-md-12">
             <table id="example" class="table table-responsive-sm table-striped" style="width:100%">
                     <thead>
                         <tr>
-                            <th>Idioma</th>
-                            <th>Idioma</th>
+                            <th>N. Utilizador</th>
+                            <th>email</th>
+                            <th>role</th>
+                            <th>operacoes</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($idiomas as $idioma)
+                        @foreach($users as $user)
                         <tr>
                           <td>
-                              {{$idioma->nome}}
+                              {{$user->name}}
                           </td> 
-                          <td></td> 
+                          <td>
+                              {{$user->email}}
+                          </td> 
+                          <td>
+                              {{$user->menuroles}}
+                          </td> 
+                          <td>
+                            <a type="button" class="btn btn-secondary" href=''>
+                              Modificar</a>
+                            <a type="button" class="btn btn-danger" href='{{url("/users/{$user->id}/eliminar")}}'>
+                              eliminar</a>
+                          </td> 
                         </tr>
                         
                         @endforeach

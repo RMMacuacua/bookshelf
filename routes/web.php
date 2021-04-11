@@ -127,6 +127,8 @@ Route::group(['middleware' => ['get.menu']], function () {
     Route::get('/reglivro', 'livroController@create')->name('livos.criar');
     Route::post('/gravarlivro','livroController@store')->name('livros.guardar');
     Route::get('/livros','livroController@show')->name('livros.listar');
+    Route::get('/livro/{id}/editar','livroController@edit');
+    Route::get('/livro/{id}/eliminar','livroController@eliminar');
 
     Route::get('/generolist','GeneroController@show')->name('generos.listar');
     Route::get('/genero','GeneroController@create')->name('generos.criar');
@@ -139,13 +141,25 @@ Route::group(['middleware' => ['get.menu']], function () {
     Route::get('/autor','AutorController@create')->name('autor.criar');
     Route::post('/autor','AutorController@store')->name('autor.guardar');
     Route::get('/autorlist','AutorController@show')->name('autor.listar');
+    Route::get('/autor/{id}/editar','AutorController@edit')->name('autor.editar');
+    Route::get('/autor/{id}/eliminar','AutorController@delete')->name('autor.eliminar');
 
     Route::get('/editora','EditoraController@create')->name('editora.');
     Route::post('/editora','EditoraController@store')->name('editora.guardar');
     Route::get('/editoralist','EditoraController@show')->name('editora.listar');
+    Route::get('/editora/{id}/editar','EditoraController@edit')->name('editora.editar');
+    Route::get('/editora/{id}/eliminar','EditoraController@delete')->name('editora.eliminar');
 
 
 
     Route::get('/loja','shopController@home')->name('loja.home');
     Route::get('/loja/{title}/detalhes','shopController@details');
 
+    Route::get('/reguser','AuthController@reguser')->name('users.reg');
+    Route::post('/saveuser','AuthController@storeuser')->name('user.store');
+    Route::get('/logout','AuthController@logout')->name('user.logout');
+    Route::get('/loja/entrar',function () {  return view('loja.userlogin'); })->name('loja.login');
+    Route::post('/loja/entrar','AuthController@entrar')->name('user.entrar');
+
+    Route::get('userslist','UsersController@show')->name('user.list');
+    Route::get('users/{id}/eliminar','UsersController@destroy')->name('user.list');
