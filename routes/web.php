@@ -21,6 +21,7 @@ Route::get('/', function () {
 
 Route::get('/livros/listar','BooksController@index');
 Route::get('/livros/gravar','BooksController@registar');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -33,3 +34,7 @@ Route::prefix('backoffice')->group(function () {
     Route::get('/livros/registar','BooksController@registar')->name('registarlivros');
     Route::post('/livros/gravar','BooksController@store')->name('livros.gravar');
 });
+
+//teste com rotas 
+Route::get('/admin','AuthController@dashboard')->name('admin');
+Route::get('/admin/login','AuthController@showlogin')->name('admin.login');
