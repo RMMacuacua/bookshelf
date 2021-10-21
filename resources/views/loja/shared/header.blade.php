@@ -35,24 +35,30 @@
                 <a class="dropdown-item" href="#">Something else here</a>
                 </div>
             </li>
+            <li class="nav-item">
+                <form class="form-inline mt-2 mt-md-0">
+                <input class="form-control mr-sm-2" type="text" placeholder="Pesquisar" aria-label="pesq">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Ir</button>
+                </form>
+            </li>
+            
+            <li class="nav-item text-end">
+                @if(Auth::check() === false)
+                <div class="text-end">
+                    <a type="button" class="btn btn-outline-light me-2" href="/loja/entrar">entrar</a>
+                    <a type="button" class="btn btn-warning" href="/reguser">Registar</a>
+                </div>
+                @else
+                <div class="text-end">
+                    <a type="button" class="btn btn-warning" href="/logout">sair</a>
+                    <a type="button" class="btn btn-danger" href="/loja/cart"><i class="cis-accessible"></i>
+                        Cart
+                    
+                    </a>
+                </div>
+                @endif
+            </li>
             </ul>
-            <form class="form-inline mt-2 mt-md-0">
-            <input class="form-control mr-sm-2" type="text" placeholder="Pesquisar" aria-label="pesq">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Ir</button>
-            </form>
-            
-            
-            @if(Auth::check() === false)
-            <div class="text-end">
-                <a type="button" class="btn btn-outline-light me-2" href="/loja/entrar">entrar</a>
-                <a type="button" class="btn btn-warning" href="/reguser">Registar</a>
-            </div>
-            @else
-            <div class="text-end">
-                <a type="button" class="btn btn-warning" href="/logout">sair</a>
-                <a type="button" class="btn btn-danger" href="">Cart</a>
-            </div>
-            @endif
         </div>
     </nav>
 

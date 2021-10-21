@@ -39,7 +39,7 @@ class LivroController extends Controller
             $data = ['titulo' => $request->titulo, 'autor_id' => $request->autor,
                      'isbn' => $request->isbn, 'edicao' => $request->edicao,
                      'sinopse' => $request->sinopse, 'ano' => $request->ano,
-                     'genero_id' => $request->genero, 'registado_por' => Auth::user()->id,
+                     'genero_id' => $request->genero, 'registado_por' => 5,
                      'idioma_id' => $request->idioma, 'preco'=> $request->preco,
                     'updated_at' => now()];
             Livro::where('id_livro',$id)->update($data);
@@ -75,7 +75,7 @@ class LivroController extends Controller
                 $file = $request->file('capa');
                 $data = file_get_contents($file);
                 $img = base64_encode($data);
-                echo $img;
+                
                 DB::table('imagens_livros')->insert(['name' => "capa",'livro_id'=> $livro->id,'imagem' => $img]);
 
             }
@@ -83,11 +83,6 @@ class LivroController extends Controller
             $livros = DB::table('livros')->get();
             return view('backoffice.livros.listar',compact('livros'));
         }
-/* 
-        
-        
-        
-        //var_dump($livro);*/
 
     }
 
@@ -112,7 +107,15 @@ class LivroController extends Controller
             DB::table('imagens_livros')->where('livro_id',$id)->delete();
             $livro = Livro::where('id_livro',$id);
             $livro->delete();
+            return back();
        }
         
+    }
+
+    
+    function update(Request $request)
+    {
+        //var_dump($request);
+
     }
 }

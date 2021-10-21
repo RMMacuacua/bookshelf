@@ -24,7 +24,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','google_id'
     ];
 
     /**
@@ -51,5 +51,9 @@ class User extends Authenticatable
 
     protected $attributes = [ 
         'menuroles' => 'user',
+    ];
+
+    protected $appends = [
+        'profile_photo_url',
     ];
 }

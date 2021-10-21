@@ -148,11 +148,8 @@
 
 
 
-                            <button
-                                type="submit"
-                                class="btn btn-primary"
-                            >
-                                Select
+                            <button  type="submit" class="btn btn-primary" >
+                                Gravar
                             </button>
                             <a 
                                 href="{{ route('bread.index') }}"

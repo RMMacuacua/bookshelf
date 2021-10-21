@@ -33,11 +33,12 @@
                     <input class="form-control" type="password" placeholder="{{ __('Password') }}" name="password" required>
                     </div>
                     <div class="row">
-                    <div class="col-6">
+                    <div class="col-7">
                         <button class="btn btn-primary px-4" type="submit">{{ __('Login') }}</button>
+                        <a class="btn btn-primary " href="/loja/google">{{ __('Entrar com Google') }}</a>
                     </div>
                     </form>
-                    <div class="col-6 text-right">
+                    <div class="col-4 text-right">
                         <a href="{{ route('password.request') }}" class="btn btn-link px-0">{{ __('Forgot Your Password?') }}</a>
                     </div>
                     </div>

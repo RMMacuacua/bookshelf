@@ -126,6 +126,7 @@ Route::group(['middleware' => ['get.menu']], function () {
     Route::get('/backoffice', function () {  return view('backoffice.backoffice'); });
     Route::get('/reglivro', 'livroController@create')->name('livos.criar');
     Route::post('/gravarlivro','livroController@store')->name('livros.guardar');
+    Route::post('/editarlivro','livroController@update')->name('livros.atualizar');
     Route::get('/livros','livroController@show')->name('livros.listar');
     Route::get('/livro/{id}/editar','livroController@edit');
     Route::get('/livro/{id}/eliminar','livroController@eliminar');
@@ -154,6 +155,14 @@ Route::group(['middleware' => ['get.menu']], function () {
 
     Route::get('/loja','shopController@home')->name('loja.home');
     Route::get('/loja/{title}/detalhes','shopController@details');
+    
+
+    Route::get('loja/google', 'GoogleController@redirectToGoogle');
+    Route::get('loja/google/callback', 'GoogleController@handleGoogleCallback');
+    Route::get('loja/cart','CartController@index')->name('loja.cart');
+
+    Route::post('loja/checkout','CompraController@comprar')->name('loja.checkout');
+    Route::get('loja/teste','CompraController@ver');
 
     Route::get('/reguser','AuthController@reguser')->name('users.reg');
     Route::post('/saveuser','AuthController@storeuser')->name('user.store');
