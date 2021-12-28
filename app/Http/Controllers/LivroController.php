@@ -22,15 +22,16 @@ class LivroController extends Controller
     }
 
     public function store(Request $request){
-       $this->validate($request, [
+       $this->validate($request, [//controlar melhor os tipos
             'titulo' => 'required',
             'autor' => 'required',
-            'isbn' =>  'required',
+            'isbn' =>  'required',//tem que ser unique
             'edicao'  =>  'required',
             'ano'  =>  'required|digits:4|integer|min:1900|max:'.(date('Y')+1),
             'genero' => 'required',
             'idioma' => 'required',
             'editora' => 'required',
+            'qtd' => 'required|integer',
             'preco' => 'required|numeric'
         ]);
 
@@ -41,6 +42,7 @@ class LivroController extends Controller
                      'sinopse' => $request->sinopse, 'ano' => $request->ano,
                      'genero_id' => $request->genero, 'registado_por' => 5,
                      'idioma_id' => $request->idioma, 'preco'=> $request->preco,
+                     'quantidade' => $request->qtd,
                     'updated_at' => now()];
             Livro::where('id_livro',$id)->update($data);
 
@@ -65,10 +67,11 @@ class LivroController extends Controller
             $livro->sinopse = $request->sinopse;
             $livro->ano = $request->ano;
             $livro->genero_id = $request->genero;
-            $livro->registado_por = Auth::user()->id;
+            $livro->registado_por = 5;
             $livro->idioma_id = $request->idioma;
             $livro->editora_id = $request->editora;
             $livro->preco = $request->preco;
+            $livro->quantidade = $request->qtd;
             $livro->save();
             
             if($request->hasFile('capa')){

@@ -81,7 +81,7 @@
                             </div>
                             <div class="row">
                             
-                                <div class="form-group col-4">
+                                <div class="form-group col-2">
                                     <label>Capa</label>
                                     <input type="file" class="form-control-file" name="capa">
                                 </div>
@@ -91,6 +91,15 @@
                                     type="text"
                                     placeholder="Table name"
                                     name="preco"
+                                    class="form-control"
+                                >
+                            </div>
+                            <div class="form-group col-2">
+                                <label>Qtd</label>
+                                <input 
+                                    type="text"
+                                    placeholder="Quantidade"
+                                    name="qtd"
                                     class="form-control"
                                 >
                             </div>

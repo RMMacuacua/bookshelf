@@ -100,7 +100,7 @@
                             </div>
                             <div class="row">
                             
-                                <div class="form-group col-4">
+                                <div class="form-group col-2">
                                     <label>Capa</label>
                                     <input type="file" class="form-control-file" name="capa">
                                 </div>
@@ -112,6 +112,15 @@
                                     name="preco"
                                     class="form-control"
                                     value="{{$livro->preco}}"
+                                >
+                            </div>
+                            <div class="form-group col-2">
+                                <label>Qtd</label>
+                                <input 
+                                    type="text"
+                                    value="{{$livro->quantidade}}"
+                                    name="qtd"
+                                    class="form-control"
                                 >
                             </div>
                                 <div class="form-group col-3">
